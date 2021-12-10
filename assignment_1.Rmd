@@ -1,0 +1,44 @@
+---
+title: "Assignment_1"
+author: '10911963'
+date: "11/12/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Andrew Assignment
+## This is it.
+### Sub heading 3.
+
+This is my assignment. First I am going to load my packages.
+
+```{r, message=FALSE}
+library(tidyverse) # load the tidyverse
+library(patchwork) # need to combine our 4 plots at the end
+library(Hmisc) # allow to use the stat_summary() function
+library(gt) # make a gt table
+library(ggridges) # calculates density estimates and draw the ridge line plot
+library(cowplot) # arrange multiple plots
+library(ggstatsplot) # create scatter plots
+```
+
+#Let's now read in the data
+```{r, message=FALSE}
+assignment_1_data <- read_csv
+```
+
+#Let's wrangle the data
+```{r, message=FALSE}
+str(assignment_1_data)
+```
+
+#Rename conditions and reshape to long format
+```{r, message=FALSE}
+assignment_long_data <- assignment_1_data %>%
+  pivot_longer(cols = c(Condition1, Condition2, Condition3, Condition4),
+               names_to = "Condition",
+               values_to = "RT")
+```
